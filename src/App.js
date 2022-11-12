@@ -23,7 +23,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const url = `http://localhost:3001/game-list?webTradeEligibility=${details.webTradeEligibility}&browserid=${details.browserid}&steamLoginSecure=${details.steamLoginSecure}&sessionid=${details.sessionid}&steamparental=${details.steamparental}`
-    
+
     axios.get(url).then((response) => {
       setData(response.data);
       setLoading(true);
@@ -32,7 +32,7 @@ function App() {
   }
 
   const dataList = loading && data.map(data => (
-    <tbody>
+    <tbody key={data.gameID}>
       <td><img src={data.gameImg} alt="" /></td>
       <td>{data.name}</td>
       <td>$ {data.gamePrice}</td>
@@ -53,7 +53,7 @@ function App() {
         <button type="submit">Submit</button>
       </form>
       
-      <table className="center">
+      {loading ? <table className="center">
         <tbody>
           <tr>
             <th>cover</th>
@@ -63,11 +63,9 @@ function App() {
             <th>steam page</th>
           </tr>  
         </tbody>
-      
         {dataList}
-      </table>
-
-      
+      </table> : <h1>loading...</h1>}
+    
 
     </div>
   );
