@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios'
+import Data from './components/Data';
 
 function App() {
   const [data, setData] = useState({});
@@ -31,20 +32,14 @@ function App() {
     })
   }
 
-  const dataList = loading && data.map(data => (
-    <tbody key={data.gameID}>
-      <td><img src={data.gameImg} alt="" /></td>
-      <td>{data.name}</td>
-      <td>$ {data.gamePrice}</td>
-      <td>$ {data.profit}</td>
-      <td><a href={data.gameUrl}>Buy it!</a></td>
-    </tbody>
-  ))
+  const dataList = loading && data.map(data => (<Data data={data}></Data>))
 
   return (
     <div className="app">
 
-      <form onSubmit={handleSubmit}>
+      <h1 className='center'>trading card profit</h1>
+
+      <form className='center' onSubmit={handleSubmit}>
         <h3>webTradeEligibility</h3> <input type="text" name="webTradeEligibility" onChange={handleChange}/>
         <h3>browserid</h3> <input type="text" name="browserid" onChange={handleChange}/>
         <h3>steamLoginSecure</h3> <input type="text" name="steamLoginSecure" onChange={handleChange}/>
