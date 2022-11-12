@@ -11,7 +11,7 @@ body {
   font-family: 'Nunito Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #25405B;
+  background-color: #1b2838;
 }
 
 a {
@@ -24,15 +24,59 @@ p {
 }
 
 h1{
-  font-size: 6rem;
+  font-size: 4rem;
+  text-align: center;
+  text-transform: uppercase;  
+}
+
+h3{
+  padding-top: .5rem;
+}
+
+form{
+  margin-bottom: 1rem;
+  align-items: center;
+  background-color: #171a21;
+  border-radius: 21px;
+  box-sizing: border-box;
+  height: 31.25rem;
+  padding: 1.25rem;
+  width: 30rem;
+}
+
+input{
+  height: 2.18rem;
+  position: relative;
+  width: 100%;
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 1.125rem;
+  padding: .25rem 1.25rem 0;
+}
+
+button{
+  background-color: #66c0f4;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #171a21;
+  cursor: pointer;
+  font-size: 1.125rem;
+  height: 3.125rem;
+  margin-top: 2.375rem;
+  outline: 0;
+  text-align: center;
+  width: 100%;
+}
+
+button:active {
+  background-color: #4a91bb;
 }
 
 table{
-  /*position: absolute;
-  z-index: 2;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);*/
   width: 60%;
   border-collapse: collapse;
   border-spacing: 0;
@@ -50,8 +94,17 @@ th,td{
 }
 
 th{
-  background-color: grey;
+  background-color: #2a475e;
+  color: white;
   text-transform: uppercase;
+}
+
+tbody{
+  background-color: #dbebf8;
+}
+
+tbody:nth-child(odd){
+  background-color: #c7d5e0;
 }
 
 .app{
