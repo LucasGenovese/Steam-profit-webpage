@@ -4,8 +4,9 @@ import Data from './components/Data';
 
 function App() {
   const [data, setData] = useState({});
-  const [loading, setLoading] = useState(false);
+  const [didLoad, setDidLoad] = useState(false);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const [details,setDetails] = useState({
     webTradeEligibility: "",
@@ -25,12 +26,17 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const url = `http://localhost:3001/game-list?webTradeEligibility=${details.webTradeEligibility}&browserid=${details.browserid}&steamLoginSecure=${details.steamLoginSecure}&sessionid=${details.sessionid}&steamparental=${details.steamparental}`
+    setLoading(true);
+    setError(null);
 
     axios.get(url)
     .then(response => {
       setData(response.data);
-      setLoading(true);
+      setDidLoad(true);
+
+      setLoading(false);
     }).catch(error => {
+      setLoading(false);
       if (error.response){
         setError('Could not get any games for that input. Try loading your cookies again');
         console.log('Could not get any games for that input. Try loading your cookies again');
@@ -41,10 +47,10 @@ function App() {
         setError('Unespected error: ', error.message);
         console.log('Unespected error: ', error.message);
       }
-    })    
+    })
   }
 
-  const dataList = loading && data.map(data => (<Data data={data}></Data>))
+  const dataList = didLoad && data.map(data => (<Data data={data}></Data>))
 
   return (
     <div className="app">
@@ -62,7 +68,9 @@ function App() {
       
       {error && <h2>{error}</h2>}
 
-      {loading ? <table className="center">
+      {loading ? <div class="loader">Loading...</div> : null}
+
+      {didLoad ? <table className="center">
         <tbody>
           <tr>
             <th>cover</th>
@@ -74,7 +82,7 @@ function App() {
         </tbody>
         {dataList}
       </table> : null}
-    
+
 
     </div>
   );
