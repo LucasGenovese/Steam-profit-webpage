@@ -133,6 +133,11 @@ tbody:nth-child(odd){
   text-align: center;
 }
 
+.fixed-height{
+  display: block;
+  height: 80px;
+}
+
 .loader,
 .loader:before,
 .loader:after {

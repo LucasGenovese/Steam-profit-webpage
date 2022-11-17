@@ -81,10 +81,15 @@ function App() {
         <h3 className='align'>Show games you do not own</h3> <input type="checkbox" onChange={handleCheck}/> 
         <button type="submit">Submit</button>
       </form>
-      
+        
       {error && <h2>{error}</h2>}
-
-      {loading ? <div className="loader">Loading...</div> : null}
+        
+      {loading ? <div>
+        <div className='fixed-height'>
+          <div className="loader"></div>  
+        </div>
+        <h2>Please wait, this could take up to 3 minutes</h2>
+      </div> : null}
 
       {didLoad ? <table className="center">
         <tbody>
@@ -98,7 +103,6 @@ function App() {
         </tbody>
         {dataList}
       </table> : null}
-
     </div>
   );
 }
