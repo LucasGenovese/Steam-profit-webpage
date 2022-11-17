@@ -8,6 +8,7 @@
 
 body {
   margin: 0;
+  min-height: 100vh;
   font-family: 'Nunito Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -117,6 +118,17 @@ tbody:nth-child(odd){
   background-color: #c7d5e0;
 }
 
+svg{
+  fill: white;
+  padding-right: .4rem;
+}
+
+footer{
+  background-color: #171a21;
+  min-height: 3.125rem;
+  text-align: center;
+}
+
 .app{
   width: 100%;
   height: 100vh;
@@ -136,6 +148,22 @@ tbody:nth-child(odd){
 .fixed-height{
   display: block;
   height: 80px;
+}
+
+.footer-link-no-padding{
+  color:white;
+}
+
+.footer-link{
+  color: white;
+  padding-right: 1rem;
+}
+
+.sticky-footer{
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 100%;
 }
 
 .loader,
